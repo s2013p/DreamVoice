@@ -6,9 +6,21 @@ from tts import *
 from translator import *
 from wikipedia import *
 from bingo import *
+from threading import Thread as tred
 
+done=False
+def sleepp():
+    import time
+    licznik=1
+    while not done and licznik <=5:
+        time.sleep(1)
+        licznik+=1
+    if licznik==5:
+        done=True
+    
 
 def wikipedia():
+
     print("Wypowiedz zapytanie do wikipedi: ")
     say("Wypowiedz zapytanie do wikipedi")
     search_query = stt(listen())
@@ -21,12 +33,16 @@ def wikipedia():
             print(f"Wyniki wyszukiwania dla '{search_query}':\n")
             say(f"Wyniki wyszukiwania dla '{search_query}'")
             for title, details in search_results.items():
-                print(f"Tytuł: {title}")
-                say(f"Tytuł: {title}")
-                print(f"Skrót: {details['snippet']}")
-                say(f"Skrót: {details['snippet']}")
-                print(f"pageid: {details['pageid']}")
-                print("\n")
+                if done==False:
+                    print(f"Tytuł: {title}")
+                    say(f"Tytuł: {title}")
+                    print(f"Skrót: {details['snippet']}")
+                    say(f"Skrót: {details['snippet']}")
+                    print(f"pageid: {details['pageid']}")
+                    print("\n")
+                    tred(target=sleepp).start()
+                    input()
+                    done=False
 
 
 while True:
