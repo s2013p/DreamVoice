@@ -1,5 +1,6 @@
-#Requirments: pyttsx3, SpeechRecognition, pyautogui, bs4, requests, langdetect, pyaudio, translate
-
+#Requirments: gTTS ,pygame, SpeechRecognition, pyautogui, bs4, requests, langdetect, pyaudio, translate
+from os import system
+system("pip install gTTS pygame SpeechRecognition pyautogui bs4 requests langdetect pyaudio translate")
 from stt import *
 from tts import *
 from translator import *
