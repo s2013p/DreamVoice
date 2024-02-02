@@ -13,19 +13,20 @@ def wikipedia():
     say("Wypowiedz zapytanie do wikipedi")
     search_query = stt(listen())
     print(search_query)
-    search_results = search_wikipedia(search_query)
-    if "error" in search_results:
-        print(search_results["error"])
-    else:
-        print(f"Wyniki wyszukiwania dla '{search_query}':\n")
-        say(f"Wyniki wyszukiwania dla '{search_query}'")
-        for title, details in search_results.items():
-            print(f"Tytuł: {title}")
-            say(f"Tytuł: {title}")
-            print(f"Skrót: {details['snippet']}")
-            say(f"Skrót: {details['snippet']}")
-            print(f"pageid: {details['pageid']}")
-            print("\n")
+    if search_query!="Nie zrozumiałem":
+        search_results = search_wikipedia(search_query)
+        if "error" in search_results:
+            print(search_results["error"])
+        else:
+            print(f"Wyniki wyszukiwania dla '{search_query}':\n")
+            say(f"Wyniki wyszukiwania dla '{search_query}'")
+            for title, details in search_results.items():
+                print(f"Tytuł: {title}")
+                say(f"Tytuł: {title}")
+                print(f"Skrót: {details['snippet']}")
+                say(f"Skrót: {details['snippet']}")
+                print(f"pageid: {details['pageid']}")
+                print("\n")
 
 
 while True:
@@ -43,6 +44,8 @@ while True:
         say(j,"en")
     elif "bingo" in n.lower():
         bingo()
+    elif "pa" in n.lower() or "widzenia" in n.lower() or "wyjdź" in n.lower():
+        exit()
 
     else:
         print("Nie obsługuję tej aplikacji")
