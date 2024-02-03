@@ -23,20 +23,24 @@ def wikipedia():
             for title, details in search_results.items():
                 print(f"Tytuł: {title}")
                 say(f"Tytuł: {title}")
-                print(f"Skrót: {details['snippet']}")
-                say(f"Skrót: {details['snippet']}")
-                print(f"pageid: {details['pageid']}")
-                print("\n")
-                print("Czy czytać dalej? Wciśnij enter aby czytać. wpisz COKOLWIEK i kliknij enter aby nie czytać")
-                say("Czy czytać dalej? Wciśnij enter aby czytać. wpisz COKOLWIEK i kliknij enter aby nie czytać")
+                print("Czytać to? Kliknij enter jeśli tak jeśli nie wpisz COKOLWIEK i wciśnij enter.")
+                say("Czytać to?. Kliknij enter jeśli tak jeśli nie wpisz COKOLWIEK i wciśnij enter.")
                 if input()=="":
-                    pass
-                else:
-                    break
+                    print(f"Skrót: {details['snippet']}")
+                    say(f"Skrót: {details['snippet']}")
+                    print(f"pageid: {details['pageid']}")
+                    print("\n")
+                    print("Czy czytać dalej? Wciśnij enter aby czytać. wpisz COKOLWIEK i kliknij enter aby nie czytać")
+                    say("Czy czytać dalej? Wciśnij enter aby czytać. wpisz COKOLWIEK i kliknij enter aby nie czytać")
+                    if input()=="":
+                        pass
+                    else:
+                        break
                 
                 
 
-
+print("Witaj. Jestem Dream-twój asystent marzeń")
+say("Witaj. Jestem Dream.twój asystent marzeń")
 while True:
     done=False
     print("Jakiej aplikacji chcesz teraz użyć?")
