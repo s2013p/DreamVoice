@@ -6,21 +6,9 @@ from tts import *
 from translator import *
 from wikipedia import *
 from bingo import *
-from threading import Thread as tred
 
-done=False
-def sleepp():
-    import time
-    licznik=1
-    while not done and licznik <=5:
-        time.sleep(1)
-        licznik+=1
-    if licznik==5:
-        done=True
-    
 
 def wikipedia():
-
     print("Wypowiedz zapytanie do wikipedi: ")
     say("Wypowiedz zapytanie do wikipedi")
     search_query = stt(listen())
@@ -33,19 +21,24 @@ def wikipedia():
             print(f"Wyniki wyszukiwania dla '{search_query}':\n")
             say(f"Wyniki wyszukiwania dla '{search_query}'")
             for title, details in search_results.items():
-                if done==False:
-                    print(f"Tytuł: {title}")
-                    say(f"Tytuł: {title}")
-                    print(f"Skrót: {details['snippet']}")
-                    say(f"Skrót: {details['snippet']}")
-                    print(f"pageid: {details['pageid']}")
-                    print("\n")
-                    tred(target=sleepp).start()
-                    input()
-                    done=False
+                print(f"Tytuł: {title}")
+                say(f"Tytuł: {title}")
+                print(f"Skrót: {details['snippet']}")
+                say(f"Skrót: {details['snippet']}")
+                print(f"pageid: {details['pageid']}")
+                print("\n")
+                print("Czy czytać dalej? Wciśnij enter aby czytać. wpisz COKOLWIEK i kliknij enter aby nie czytać")
+                say("Czy czytać dalej? Wciśnij enter aby czytać. wpisz COKOLWIEK i kliknij enter aby nie czytać")
+                if input()=="":
+                    pass
+                else:
+                    break
+                
+                
 
 
 while True:
+    done=False
     print("Jakiej aplikacji chcesz teraz użyć?")
     say("Jakiej aplikacji chcesz teraz użyć?")
     n = stt(listen())
@@ -55,7 +48,9 @@ while True:
         wikipedia()
     elif "tłumacz" in n.lower():
         say("Co chcesz przetłumaczyć?")
-        j=auto_translate(str(stt(listen())), "en")
+        nn=str(stt(listen()))
+        print(nn)
+        j=auto_translate(nn, "en")
         print(j)
         say(j,"en")
     elif "bingo" in n.lower():
