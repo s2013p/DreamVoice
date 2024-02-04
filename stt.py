@@ -7,7 +7,7 @@ def listen():
 
     with sr.Microphone() as source:
         print("Mów teraz")
-        audio=r.listen(source)
+        audio=r.listen(source,timeout=5)
 
         return audio
 
