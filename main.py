@@ -26,14 +26,14 @@ def wikipedia():
                 print("Przeczytać to?")
                 say("Przeczytać to?")
        
-                if stt(listen()).lower()=="tak":
+                if "tak" in stt(listen()).lower():
                     print(f"Skrót: {details['snippet']}")
                     say(f"Skrót: {details['snippet']}")
                     print(f"pageid: {details['pageid']}")
                     print("\n")
                     print("Czy czytać dalej?")
                     say("Czy czytać dalej?")
-                    if stt(listen()).lower()=="tak":
+                    if "tak" in stt(listen()).lower():
                         pass
                     else:
                         break
