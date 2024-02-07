@@ -58,8 +58,6 @@ while True:
         j=auto_translate(nn, "en")
         print(j)
         say(j,"en")
-    elif "bingo" in n.lower():
-        bingo()
     elif "pa" in n.lower() or "widzenia" in n.lower() or "wyjdź" in n.lower():
         exit()
 
