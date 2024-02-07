@@ -1,9 +1,9 @@
 import speech_recognition as sr
 from translator import *
 
-
+r = sr.Recognizer()
 def listen():
-    r = sr.Recognizer()
+    
 
     with sr.Microphone() as source:
         print("Mów teraz")
@@ -13,8 +13,6 @@ def listen():
 
 
 def stt(listen,language="pl"):
-    r = sr.Recognizer()
-
     with sr.Microphone() as source:
         audio = listen
 
@@ -22,7 +20,9 @@ def stt(listen,language="pl"):
             text = r.recognize_google(audio, language=language)
             return text
         except sr.UnknownValueError:
-            return auto_translate("Nie zrozumiałem",language)
+            print(auto_translate("Nie zrozumiałem",language))
+            stt(r)
+            
         except sr.RequestError as e:
             return str(e)
 
