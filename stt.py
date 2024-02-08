@@ -4,12 +4,15 @@ from translator import *
 r = sr.Recognizer()
 def listen():
     
+    try:
+        with sr.Microphone() as source:
+            print("Mów teraz")
+            audio=r.listen(source)
 
-    with sr.Microphone() as source:
-        print("Mów teraz")
-        audio=r.listen(source)
-
-        return audio
+            return audio
+    except:
+        print("Nie rozumiem")
+        listen()
 
 
 def stt(listen,language="pl"):
@@ -21,7 +24,7 @@ def stt(listen,language="pl"):
             return text
         except sr.UnknownValueError:
             print(auto_translate("Nie zrozumiałem",language))
-            stt(r)
+            stt(listen())
             
         except sr.RequestError as e:
             return str(e)

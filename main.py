@@ -5,7 +5,11 @@ from stt import *
 from tts import *
 from translator import *
 from wikipedia import *
-from bingo import *
+
+
+"""system("C:/windows/system32/shutdown.exe -s")
+            say("Dziekuje że wybrałeś asystenta dream. Mam nadzieję że spełnił twoje oczekiwania. Komputer wyloguje cię za około minutę. Mam nadzieję że polecisz mnie znajomym oraz rodzinie. Jeśli wystąpiły jakieś błędy najmocniej za nie przepraszam. Nasz zespół już nad nimi pracuje.")
+            exit()"""
 
 
 def wikipedia():
@@ -58,6 +62,48 @@ while True:
         j=auto_translate(nn, "en")
         print(j)
         say(j,"en")
+    elif "komputer" in n.lower():
+        print("Co chcesz zrobić z komputerem?")
+        say("Co chcesz zrobić z komputerem?")
+        n=stt(listen())
+        from pyautogui import typewrite as typee
+        from pyautogui import press
+        press("win")
+        typee("cmd")
+        press("enter")
+        from time import sleep
+        sleep(1)
+        
+        
+        if "wyłącz" in n.lower():
+            typee("cd C:/windows/system32")
+            press("enter")
+            typee("shutdown /s /f /t 60 /c \"The computer will shut down in 1 minute. Save your work!\"")
+            press("enter")
+            typee("exit")
+            press("enter")
+            say("Dziekuje że wybrałeś asystenta dream. Mam nadzieję że spełnił twoje oczekiwania. Komputer wyłączy się za około minutę. Mam nadzieję że polecisz mnie znajomym oraz rodzinie. Jeśli wystąpiły jakieś błędy najmocniej za nie przepraszam. Nasz zespół już nad nimi pracuje.")
+            exit()
+        elif "ponownie" in n.lower():
+            typee("cd C:/windows/system32")
+            press("enter")
+            typee("shutdown /r /f /t 60 /c \"The computer will shut down in 1 minute. Save your work!\"")
+            press("enter")
+            typee("exit")
+            press("enter")
+            say("Dziekuje że wybrałeś asystenta dream. Mam nadzieję że spełnił twoje oczekiwania. Komputer uruchomi ponownie się za około minutę. Mam nadzieję że polecisz mnie znajomym oraz rodzinie. Jeśli wystąpiły jakieś błędy najmocniej za nie przepraszam. Nasz zespół już nad nimi pracuje.")
+            exit()
+        elif "wyloguj" in n.lower():
+            typee("cd C:/windows/system32")
+            press("enter")
+            typee("shutdown /l")
+            press("enter")
+            typee("exit")
+            press("enter")
+            say("Dziekuje że wybrałeś asystenta dream. Mam nadzieję że spełnił twoje oczekiwania. Komputer wyloguje cię za około minutę. Mam nadzieję że polecisz mnie znajomym oraz rodzinie. Jeśli wystąpiły jakieś błędy najmocniej za nie przepraszam. Nasz zespół już nad nimi pracuje.")
+            exit()
+        
+            
     elif "pa" in n.lower() or "widzenia" in n.lower() or "wyjdź" in n.lower():
         exit()
 
